@@ -7,6 +7,21 @@ const notice = chalk.bgYellow.black;
 
 const MAX_LIVES = 5;
 
+const highScores = [
+    {
+        name: "Miten Gajjar",
+        score: "10",
+    },
+    {
+        name: "John Wick",
+        score: "9",
+    },
+    {
+        name: "Donald Trump",
+        score: "6",
+    },
+];
+
 const questions = [
     {
         question: "What is the name of Sholay' s iconic villain?",
@@ -60,18 +75,16 @@ let level = 1;
 let lives = MAX_LIVES;
 
 const name = input.question("What is your name?\n");
+log("\n");
 log("Hello! " + name + ", We are welcoming you to this bollywood quize.");
-
+log("\n");
 log(
     "There will be 3 levels, you can go to next level if you answer 3 right questions.\nYou will get 5 lives, on each wrong anser you will lose one.\nIf you loose your all lives the quize will be over for you"
 );
-
-log(chalk.bgBlue("-------------------------------------------"));
-log(chalk.bgBlue("-------------------------------------------"));
-
+log("\n");
 function ask(qes, ans) {
-    const userAns = input.question(qes);
-    if (ans === userAns) {
+    const userAns = input.question(qes + "\n");
+    if (ans.toLowerCase() === userAns) {
         log(right("Yay, You are right :)"));
         score++;
         if (score % 3 === 0) {
@@ -102,6 +115,19 @@ function ask(qes, ans) {
     return false;
 }
 
+function checkHighScore(score) {
+    highScores.forEach((data) => {
+        if (score >= data.score) {
+            log(
+                right(
+                    "Contragts, You made a highscore By beating",
+                    chalk.bgCyanBright.black(data.name)
+                )
+            );
+        }
+    });
+}
+
 let isEnd = false;
 
 for (let i = 0; i < questions.length; i++) {
@@ -113,3 +139,5 @@ for (let i = 0; i < questions.length; i++) {
 
 log(notice("Your score is: " + score));
 log(notice("Your max level is: " + level));
+
+checkHighScore(score);
