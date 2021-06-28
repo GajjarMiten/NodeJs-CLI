@@ -1,4 +1,9 @@
 const input = require("readline-sync");
+const chalk = require("chalk");
+const log = console.log;
+const right = chalk.bgGreenBright.black;
+const wrong = chalk.bgRedBright.black;
+const notice = chalk.bgYellow.black;
 
 const MAX_LIVES = 5;
 
@@ -55,35 +60,43 @@ let level = 1;
 let lives = MAX_LIVES;
 
 const name = input.question("What is your name?\n");
-console.log(
-    "Hello! " + name + ", We are welcoming you to this bollywood quize."
-);
+log("Hello! " + name + ", We are welcoming you to this bollywood quize.");
 
-console.log(
+log(
     "There will be 3 levels, you can go to next level if you answer 3 right questions.\nYou will get 5 lives, on each wrong anser you will lose one.\nIf you loose your all lives the quize will be over for you"
 );
+
+log(chalk.bgBlue("-------------------------------------------"));
+log(chalk.bgBlue("-------------------------------------------"));
 
 function ask(qes, ans) {
     const userAns = input.question(qes);
     if (ans === userAns) {
-        console.log("You are right");
+        log(right("Yay, You are right :)"));
         score++;
         if (score % 3 === 0) {
             level++;
-            console.log("Congrats you just cleared level: " + (level - 1));
-            console.log("Your current level is: " + level);
+            log("Congrats you just cleared level: " + (level - 1));
+            log("Your current level is: " + level);
         }
     } else {
         lives--;
-        console.log("You are wrong.");
-        console.log("the correct answer for this question is: " + ans);
+        log(wrong("Opps, You are wrong :("));
+        log(
+            wrong(
+                "the correct answer for this question is: ",
+                chalk.underline.bgWhite.black(ans)
+            )
+        );
     }
-    console.log("score: " + score);
-    console.log("lives: " + lives);
-    console.log("---------------------------------------------------------");
+    log(notice("score: " + score));
+    log(notice("lives: " + lives));
+    log(
+        chalk.white("---------------------------------------------------------")
+    );
 
     if (lives === 0) {
-        console.log("Oops you lost all your lives the game is over");
+        log(wrong("Oops you lost all your lives the game is over"));
         return true;
     }
     return false;
@@ -98,5 +111,5 @@ for (let i = 0; i < questions.length; i++) {
     }
 }
 
-console.log("Your score is: " + score);
-console.log("Your max level is: " + level);
+log(notice("Your score is: " + score));
+log(notice("Your max level is: " + level));
