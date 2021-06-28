@@ -18,6 +18,13 @@
 
 // ask("Is my age is greater than 25?", "yes");
 
-for (let i = 0; i < 5; i++) {
-    console.log("Miten Gajjar");
+let op = "";
+
+for (let i = 1; i <= 5; i++) {
+    for (let j = 1; j <= i; j++) {
+        op += "* ";
+    }
+    op += "\n";
 }
+console.log(op);
+
