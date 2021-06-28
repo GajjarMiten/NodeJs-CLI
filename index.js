@@ -28,3 +28,13 @@ for (let i = 1; i <= 5; i++) {
 }
 console.log(op);
 
+op = "";
+
+for (let i = 1; i <= 5; i++) {
+    for (let j = 5 - i; j >= 0; j--) {
+        op += "* ";
+    }
+    op += "\n";
+}
+
+console.log(op);
