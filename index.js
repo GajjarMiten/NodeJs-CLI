@@ -1,19 +1,23 @@
-const input = require("readline-sync");
-let score = 0;
+// const input = require("readline-sync");
+// let score = 0;
 
-const name = input.question("What is your name?\n");
+// const name = input.question("What is your name?\n");
 
-console.log("Hello! " + name + ", We are welcoming you here.");
+// console.log("Hello! " + name + ", We are welcoming you here.");
 
-function ask(qes, ans) {
-    const userAns = input.question(qes);
-    if (ans === userAns) {
-        console.log("You are right");
-        score++;
-    } else {
-        console.log("You are wrong.");
-    }
-    console.log("score: " + score);
+// function ask(qes, ans) {
+//     const userAns = input.question(qes);
+//     if (ans === userAns) {
+//         console.log("You are right");
+//         score++;
+//     } else {
+//         console.log("You are wrong.");
+//     }
+//     console.log("score: " + score);
+// }
+
+// ask("Is my age is greater than 25?", "yes");
+
+for (let i = 0; i < 5; i++) {
+    console.log("Miten Gajjar");
 }
-
-ask("Is my age is greater than 25?", "yes");
